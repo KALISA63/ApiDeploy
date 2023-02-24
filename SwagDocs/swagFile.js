@@ -23,6 +23,11 @@ const options= {
             url: 'http://localhost:9000/',
             description: 'servDev',
           },
+          {
+            url: 'https://api63.onrender.com/',
+            description: 'swagOutput',
+          },
+
           
         ],
         tags: [
