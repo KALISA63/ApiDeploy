@@ -5,20 +5,20 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const multer = require("multer");
 
-//picture upload
+// picture upload
 
-// const storage=multer.diskStorage({
-//   destination:(req,file,cb)=>{
-//     cb(null,"./routes/images")
-//   },filename:(req,file,cb)=>{
-//     cb(null,file.originalname)
-//   }
-// });
+const storage=multer.diskStorage({
+  destination:(req,file,cb)=>{
+    cb(null,"./routes/images")
+  },filename:(req,file,cb)=>{
+    cb(null,file.originalname)
+  }
+});
 
-// const upload=multer({storage:storage});
-// router.post('/upload', upload.single("image"),(req,res)=>{
-//   res.status(200).json("File uploaded");
-// })
+const upload=multer({storage:storage});
+router.post('/upload', upload.single("image"),(req,res)=>{
+  res.status(200).json("File uploaded");
+})
 
 
 //Register
