@@ -17,8 +17,18 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
       password: hashedPass,
     });
-    const user = await newUser.save();
-    return res.status(200).json(user);
+    const userna = await User.find({ username: req.body.username })
+    const userEmail = await User.find({ email: req.body.email })
+    if (userna.length !== 0) {
+      return res.status(402).json("Pls, register with another difference Username");
+    }else if(userEmail.length!==0){
+
+      return res.status(402).json("Pls, register with another difference Email");
+    }
+    else{
+      const user = await newUser.save();
+      return res.status(200).json(user);
+    }
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);
