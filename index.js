@@ -21,6 +21,18 @@ mongoose
   .then(console.log("DB connected"))
   .catch((err) => console.log(err));
 
+  const storage=multer.diskStorage({
+    destination:(req,file,cb)=>{
+      cb(null,"./routes/images")
+    },filename:(req,file,cb)=>{
+      cb(null,file.originalname)
+    }
+  });
+
+  const upload=multer({storage:storage});
+  app.post('/api/upload', upload.single("image"),(req,res)=>{
+    res.status(200).json("File uploaded");
+  })
 
   app.use(bodyParser.json())
 app.listen("9000", () => {
