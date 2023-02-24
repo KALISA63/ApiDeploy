@@ -3,7 +3,22 @@ const User = require("../models/User.js");
 const Post = require("../models/Post.js");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const multer = require("multer");
 
+//picture upload
+
+// const storage=multer.diskStorage({
+//   destination:(req,file,cb)=>{
+//     cb(null,"./routes/images")
+//   },filename:(req,file,cb)=>{
+//     cb(null,file.originalname)
+//   }
+// });
+
+// const upload=multer({storage:storage});
+// router.post('/upload', upload.single("image"),(req,res)=>{
+//   res.status(200).json("File uploaded");
+// })
 
 
 //Register

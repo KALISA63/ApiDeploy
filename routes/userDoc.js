@@ -122,6 +122,9 @@ const UpdateUser={
                             type:"string",
                             example:"admin"
                         },
+                        picture:{
+                            type:String,
+                        },
                     }
                 }
             }
