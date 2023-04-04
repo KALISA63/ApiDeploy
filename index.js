@@ -4,13 +4,13 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const multer = require("multer");
 const userRoute = require("./routes/users");
-const postRoute = require("./routes/posts");
-const catRoute = require("./routes/cats");
+const departRoute = require("./routes/depart.js");
+const subjRoute = require("./routes/subj.js");
 const router = require("./routes/users");
 const bodyParser = require('body-parser');
-const swaggerUi=require('swagger-ui-express');
-const swaggerJSDoc= require("swagger-jsdoc");
-const swagDocs=require('./SwagDocs/swagFile');
+// const swaggerUi=require('swagger-ui-express');
+// const swaggerJSDoc= require("swagger-jsdoc");
+// const swagDocs=require('./SwagDocs/swagFile');
 
 
 dotenv.config();
@@ -23,7 +23,7 @@ mongoose
 
 
   app.use(bodyParser.json())
-app.listen("9000", () => {
+app.listen("6000", () => {
   console.log("KALISA Jacques");
 });
 
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
   res.send("KALISA Jacques");
 });
 
-app.use("/api/users", userRoute);
-app.use("/api/posts", postRoute);
-app.use("/api/cats", catRoute);
-swagDocs(app);
+app.use("/users",userRoute);
+app.use("/depart", departRoute);
+app.use("/subjects", subjRoute);
+// swagDocs(app);
